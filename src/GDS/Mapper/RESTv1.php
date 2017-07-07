@@ -66,6 +66,10 @@ class RESTv1 extends \GDS\Mapper
         if(property_exists($obj_property, 'nullValue')) {
             return null;
         }
+        if(isset($obj_property->keyValue)) {
+            if(isset($obj_property->keyValue->path[0]->name)) return $obj_property->keyValue->path[0]->name;
+            else return $obj_property->keyValue->path[0]->id;
+        }
     }
 
     /**
